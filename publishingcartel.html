@@ -84,10 +84,21 @@
 <body>
   <div id="scrolly">
     <!-- Step 1: Intro -->
-    <div class="step" data-step="1" style="height: 60vh; display: flex; align-items: center; justify-content: center;">
-      <div style="max-width: 800px; padding: 0 20px;line-height: 1.6;">
+    <div class="step" data-step="1" style="height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div style="max-width: 800px; padding: 0 0px;line-height: 1.6;">
         Every year, you help fund academic research across every discipline — from cancer research, space exploration, and climate modeling, <br>to education equity and public policy.
       </div>
+      <div style="margin-top: 300px; font-size: 2rem; animation: blink 2s ease-in-out infinite; color: #898989;">
+        ↓
+      </div>
+
+      <style>
+      @keyframes blink {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 0.5; }
+      }
+      </style>
+
     </div>
     
     <!-- Sticky graphic area begins here -->
@@ -105,7 +116,7 @@
 <div class="step" data-step="2.4" style="position: relative;">
   <div style="
     position: sticky;    top: 30vh; 
-    background: white; z-index: 2; max-width: 40%;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
     margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
     color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
     transform: translateX(200px);
@@ -118,7 +129,7 @@
 <div class="step" data-step="2.8" style="position: relative;">
   <div style="
     position: sticky;    top: 30vh;  
-    background: white; z-index: 2; max-width: 40%;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
     margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
     color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
     transform: translateX(200px);">
@@ -133,7 +144,7 @@
 <div class="step" data-step="3" style="position: relative;">
   <div style="
     position: sticky;    top: 30vh;  
-    background: white; z-index: 2; max-width: 40%;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
     margin: 0 auto; padding: 40px 20px; border: 0.8px solid black; border-radius: 10px;
     color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
     transform: translateX(200px);">
@@ -149,7 +160,7 @@
 </div>
 
 <div class="step" data-step="5" style="position: relative;">
-  <div style="position: sticky; top: 0; background: white; z-index: 2; max-width: 25%; margin: 0 auto; padding: 60px 20px; border: 0.5px solid black; border-radius: 10px; color: black; font-size: 0.8em; line-height: 1.6;text-align: left;
+  <div style="position: sticky; top: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 30%; margin: 0 auto; padding: 60px 20px; border: 0.5px solid black; border-radius: 10px; color: black; font-size: 0.8em; line-height: 1.6;text-align: left;
   transform: translateX(200px);">
   <strong>Either way, <span style="color: #f5b509;">commercial publishers</span>  profit.</strong> 
   </div>
@@ -170,38 +181,39 @@
     <img id="treemapImage" src="treemap.png" alt="Treemap of Publisher Share" style="max-width: 40%; height: auto; opacity: 1; transition: opacity 1s ease-in-out;">
   </div>  
 
-  <div class="step" data-step="6.5" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
-    <div style="max-width: 700px; line-height: 1.4; font-size: 0.7em; line-height: 1.4; text-align: left;">
-      The top three publishers account for more than half of global academic publishing revenue:<br>
+  <div class="step" data-step="6.5" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; flex-direction: column;  align-items: center; text-align: left;">
+    <div style="max-width: 700px; line-height: 1.4; font-size: 0.7em;">
+
+      <div style="margin-bottom: 1.5em;">
+        The top three publishers account for more than half of global academic publishing revenue:<br>
         <strong style="color: #d5756a;">~$5.2B</strong> of
         <strong style="color: #d5756a;">$9.9B</strong> total.
+      </div>
+  
+      <div style="margin-bottom: 1.5em;">
+        <a href="https://www.researchprofessionalnews.com/rr-news-europe-infrastructure-2024-2-elsevier-parent-reports-10-hike-in-profits-for-2023/" style="color: black; text-decoration: underline;">Elsevier</a>,
+        the biggest player in this business, has profit margins of nearly
+        <strong style="color: #d5756a;">40%</strong>.
+      </div>
+  
+      <div>
+        That’s higher than
+        <a href="https://finbox.com/NASDAQGS:AAPL/explorer/oper_inc_margin/" style="color: black; text-decoration: underline;">Apple</a>
+        <span style="color: #d5756a; font-weight: bold;">~32%</span>,
+        higher than
+        <a href="https://finbox.com/DB:PFE/explorer/oper_inc_margin" style="color: black; text-decoration: underline;">Pfizer</a>
+        <span style="color: #d5756a; font-weight: bold;">13%</span>,
+        and even
+        <a href="https://companiesmarketcap.com/lvmh/operating-margin/" style="color: black; text-decoration: underline;">luxury giant LVMH Louis Vuitton Moët Hennessy</a>
+        <span style="color: #d5756a; font-weight: bold;">22%</span>.
+      </div>
+  
+    </div>
 
-    </div>
-  </div>
-
-  <div class="step" data-step="7" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
-    <div style="max-width: 700px; line-height: 1.4; font-size: 0.7em; line-height: 1.4; text-align: left;">
-      <a href="https://www.researchprofessionalnews.com/rr-news-europe-infrastructure-2024-2-elsevier-parent-reports-10-hike-in-profits-for-2023/" style="color: black; text-decoration: underline;">Elsevier</a>
-      , the biggest player in this business, has profit margins of nearly <strong style="color: #d5756a;">40%</strong>.
-    </div>
-  </div>
-  
-  <div class="step" data-step="8" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
-    <div style="max-width: 700px; line-height: 1.4; font-size: 0.7em; line-height: 1.4; text-align: left;">
-      That’s higher than 
-      <a href="https://finbox.com/NASDAQGS:AAPL/explorer/oper_inc_margin/" style="color: black; text-decoration: underline;">
-        Apple</a> <span style="color: #d5756a; font-weight: bold;">~32%</span>.
-      Higher than 
-      <a href="https://finbox.com/DB:PFE/explorer/oper_inc_margin" style="color: black; text-decoration: underline;">
-        Pfizer</a> <span style="color: #d5756a; font-weight: bold;">13%</span><br>
-      and even 
-      <a href="https://companiesmarketcap.com/lvmh/operating-margin/" style="color: black; text-decoration: underline;">
-        luxury giant LVMH Louis Vuitton Moët Hennessy</a> <span style="color: #d5756a; font-weight: bold;">22%</span>.<br>
-    </div>
   </div>
   
   
-  <div class="step" data-step="9" style="padding: 100px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
+  <div class="step" data-step="9" style="padding: 70px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
     <div class="chart-text" style="max-width: 700px; font-size: 0.7em; line-height: 1.4;">
       <br><strong>Journal editors are hitting the exit ramp en masse </strong><br><br>
       Mass resignations from academic journals are accelerating, often in protest of high publishing fees, loss of editorial independence, and profit-driven policies.
@@ -226,7 +238,7 @@
 
 
   <!-- Sources and Credits -->
-  <div class="step" data-step="12" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
+  <div class="step" data-step="12" style="padding: 60px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
     <div style="
       background: white;
       border: 1px solid #ccc;
