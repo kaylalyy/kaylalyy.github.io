@@ -1,2 +1,2 @@
 ### Personal Portfolio 
-> https://kaylaylim.github.io/
+> https://kyl.github.io/
