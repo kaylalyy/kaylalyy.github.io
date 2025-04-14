@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datawrapper Visuals</title>
+  <title>Faith-Based Hospitals</title>
   <style>
     body {
       margin: 0;
@@ -43,7 +43,19 @@
       margin: 0 auto 20px auto;
     }
   </style>
+  <!-- DataTables CSS + Responsive extension -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+
+  <!-- jQuery + DataTables core -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <!-- DataTables Responsive extension JS -->
+  <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
 </head>
+
 <body>
 
   <!-- Header and intro text -->
@@ -75,7 +87,7 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9em;
-      table-layout: fixed;
+      table-layout: auto;
     }
     .hospital-restrictions-wrapper th,
     .hospital-restrictions-wrapper td {
@@ -198,10 +210,16 @@
         The number of faith-based hospitals in the top 25 counties (with >25% market share) has grown tenfold from 2011–2021 when compared to the previous decade, rising from 3% to 28% of the hospitals in these counties.
       </div>
 
-      <div style="max-width: 70%; display: flex; justify-content: center; margin: 0 auto;" id="datawrapper-vis-0mZja">
+      <div style="max-width: 70%; display: flex-; justify-content: center; margin: 0 auto;" id="datawrapper-vis-0mZja">
         <script type="text/javascript" defer src="https://datawrapper.dwcdn.net/acE7q/embed.js" charset="utf-8" data-target="#datawrapper-vis-acE7q"></script>
         <noscript><img src="https://datawrapper.dwcdn.net/acE7q/full.png" alt="Percent increase in the number of religiously-affiliated hospitals in top 25 counties (&gt;25% market share)" /></noscript>
       </div>
+
+      <div style="font-size: 0.9em; margin-top: 30px; line-height: 1.4;">
+        This increased presence is largely due to mergers and acquisitions by faith-based hospital systems that operate via a positive-feedback loop: expanding hospital systems increase their buying power through these acquisitions, which facilitates future acquisitions. 
+        <br><br>While faith-based hospitals can provide important community services and may reflect the values of a portion of Californians, patients should be able to make informed decisions about which hospitals they visit.
+      </div>
+    
     </div>
   </div>
 

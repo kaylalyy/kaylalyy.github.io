@@ -11,6 +11,7 @@
       margin: 0;
       font-family: sans-serif;
       background: #f5f5f5;
+      word-break: break-word;
     }
     .step {
       margin: 0 auto;
@@ -82,38 +83,49 @@
   </style>
 </head>
 <body>
+  <div id="scroll-arrow" style="
+    position: fixed;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    color: #6d6d6d;
+    z-index: 10;
+  ">
+    ↓
+  </div>
+  <style>
+  @keyframes blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.5; }
+  }
+  </style>
+
   <div id="scrolly">
     <!-- Step 1: Intro -->
-    <div class="step" data-step="1" style="height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <div class="step" data-step="1" style="height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
       <div style="max-width: 800px; padding: 0 0px;line-height: 1.6;">
-        Every year, you help fund academic research across every discipline — from cancer research, space exploration, and climate modeling, <br>to education equity and public policy.
-      </div>
-      <div style="margin-top: 300px; font-size: 2rem; animation: blink 2s ease-in-out infinite; color: #898989;">
-        ↓
+        Every year, you help fund academic research across every discipline — from cancer research, space exploration, and climate modeling, <br>to education, equity, and public policy.
       </div>
 
-      <style>
-      @keyframes blink {
-        0%, 100% { opacity: 0.2; }
-        50% { opacity: 0.5; }
-      }
-      </style>
 
     </div>
     
     <!-- Sticky graphic area begins here -->
     <div class="graphic">
-      <img id="funnelImage" src="funnel-graphic.png" alt="Funnel Visualization">
-      <img id="funnelImage2" src="funnel-graphic-BNW.png" alt="Second Funnel Visualization">
-      <img id="funnelImage3" src="funnel-graphic-profitsBNW.png" alt="Third Funnel Visualization">
+      <img id="funnelImage" src="assets/funnel-graphic.png" alt="Funnel Visualization">
+      <img id="funnelImage2" src="assets/funnel-graphic-BNW.png" alt="Second Funnel Visualization">
+      <img id="funnelImage3" src="assets/funnel-graphic-profitsBNW.png" alt="Third Funnel Visualization">
       <svg id="viz"></svg>
     </div>
 
-    <div class="step" data-step="2" style="height: 50vh;">
+    <div class="step" data-step="1.8" style="height: 20vh;">
     <!-- Extended scroll to show first funnel image longer -->
     </div>
 
-<div class="step" data-step="2.4" style="position: relative;">
+<div class="step" data-step="2.3" style="position: relative;">
   <div style="
     position: sticky;    top: 30vh; 
     background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
@@ -133,7 +145,7 @@
     margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
     color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
     transform: translateX(200px);">
-    Peer review, a critical part of the publishing process, relies almost entirely on researchers volunteering their time.
+    Peer review, a critical part of the publishing process, relies almost entirely on <strong>researchers volunteering their time</strong>.
   </div>
 </div> 
 
@@ -178,50 +190,45 @@
   </div>  
   
   <div class="step" data-step="6.1" style="padding: 20px 0 60px 0; display: flex; justify-content: center; align-items: center;">
-    <img id="treemapImage" src="treemap.png" alt="Treemap of Publisher Share" style="max-width: 40%; height: auto; opacity: 1; transition: opacity 1s ease-in-out;">
+    <img id="treemapImage" src="assets/treemap.png" alt="Treemap of Publisher Share" style="max-width: 40%; height: auto; opacity: 1; transition: opacity 1s ease-in-out;">
   </div>  
 
-  <div class="step" data-step="6.5" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; flex-direction: column;  align-items: center; text-align: left;">
-    <div style="max-width: 700px; line-height: 1.4; font-size: 0.7em;">
-
+  <div class="step" data-step="6.5" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left; ">
+    <div style="max-width: 700px; font-size: 0.7em; line-height: 1.4; ">
       <div style="margin-bottom: 1.5em;">
         The top three publishers account for more than half of global academic publishing revenue:<br>
-        <strong style="color: #d5756a;">~$5.2B</strong> of
-        <strong style="color: #d5756a;">$9.9B</strong> total.
+        <strong style="color: #000;">~$5.2B</strong> of <strong style="color: #000;">$9.9B</strong> total.
       </div>
-  
+    
       <div style="margin-bottom: 1.5em;">
         <a href="https://www.researchprofessionalnews.com/rr-news-europe-infrastructure-2024-2-elsevier-parent-reports-10-hike-in-profits-for-2023/" style="color: black; text-decoration: underline;">Elsevier</a>,
         the biggest player in this business, has profit margins of nearly
-        <strong style="color: #d5756a;">40%</strong>.
+        <span style="background: #f5b509; color: black; font-weight: bold; padding: 1px 4px; border-radius: 4px;">~40%</span>.
       </div>
-  
+    
       <div>
         That’s higher than
         <a href="https://finbox.com/NASDAQGS:AAPL/explorer/oper_inc_margin/" style="color: black; text-decoration: underline;">Apple</a>
-        <span style="color: #d5756a; font-weight: bold;">~32%</span>,
+        <span style="background: #f5b509; color: black; font-weight: bold; padding: 1px 4px; border-radius: 4px;">~32%</span>,
         higher than
         <a href="https://finbox.com/DB:PFE/explorer/oper_inc_margin" style="color: black; text-decoration: underline;">Pfizer</a>
-        <span style="color: #d5756a; font-weight: bold;">13%</span>,
+        <span style="background: #f5b509; color: black; font-weight: bold; padding: 1px 4px; border-radius: 4px;">13%</span>,
         and even
-        <a href="https://companiesmarketcap.com/lvmh/operating-margin/" style="color: black; text-decoration: underline;">luxury giant LVMH Louis Vuitton Moët Hennessy</a>
-        <span style="color: #d5756a; font-weight: bold;">22%</span>.
+        <a href="https://companiesmarketcap.com/lvmh/operating-margin/" style="color: black; text-decoration: underline;">LVMH</a>
+        <span style="background: #f5b509; color: black; font-weight: bold; padding: 1px 4px; border-radius: 4px;">22%</span>.
       </div>
-  
     </div>
+  </div>  
 
-  </div>
-  
-  
-  <div class="step" data-step="9" style="padding: 70px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
-    <div class="chart-text" style="max-width: 700px; font-size: 0.7em; line-height: 1.4;">
-      <br><strong>Journal editors are hitting the exit ramp en masse </strong><br><br>
-      Mass resignations from academic journals are accelerating, often in protest of high publishing fees, loss of editorial independence, and profit-driven policies.
+  <div class="step" data-step="9" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left; ">
+    <div style="margin-left: 20px;max-width: 700px; font-size: 0.7em; line-height: 1.4;">
+      <br><strong>Mass editorial resignations from academic journals are accelerating</strong><br><br>
+      This chart shows the number of journals per year where multiple editors resigned together, often in protest of high publishing fees, loss of editorial independence, and profit-driven policies.
     </div>
   </div>
 
-  <div class="step" data-step="9.5" style="padding: 30px 0; width: 50%; padding-left: 50px;">
-    <div id="datawrapper-vis-Joo7d" style="max-width: 1200px; margin: 0 auto;">
+  <div class="step" data-step="9.5" style=" padding: 10px 0; width: 100%; padding-left: 50px; max-width: 650px">
+    <div id="datawrapper-vis-Joo7d" style="width: 100%; margin: 0 auto;">
       <script type="text/javascript" defer src="https://datawrapper.dwcdn.net/Joo7d/embed.js" charset="utf-8" data-target="#datawrapper-vis-Joo7d"></script>
       <noscript>
         <img src="https://datawrapper.dwcdn.net/Joo7d/full.png" alt="Chart showing mass editorial resignations" style="width: 100%;" />
@@ -230,7 +237,7 @@
   </div>  
   
 
-  <div class="step" data-step="10" style="padding: 60px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
+  <div class="step" data-step="10" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left;">
     <div style="max-width: 700px; font-size: 0.7em; text-align: left; line-height: 1.4;">
       When academic publishing rewards speed, volume, and prestige above all else, it encourages a culture where corners are cut, methods are rushed, and findings are less reliable. The for-profit system thrives on publish-or-perish pressure, fueling low-quality research and deepening the reproducibility crisis. To serve the public good, we need a system that rewards integrity over output.
     </div>
@@ -267,80 +274,107 @@
 
   <script>
     
-    /* Coin fall */
-    const svg = d3.select("#viz");
-    const width = window.innerWidth;
-    const height = window.innerHeight;
 
-    const coinGroup = svg.append("g");
-    let coinTimer;
+  const svg = d3.select("#viz");
+  const width = window.innerWidth;
+  const height = window.innerHeight;
 
-    function dropCoin(cx) {
+  const coinGroup = svg.append("g");
+  let coinTimer;
 
-      
-      const coin = coinGroup.append("circle")
-        .attr("cx", cx)
-        .attr("cy", -50)
-        .attr("r", 25)
-        .attr("fill", "#f5b509")
-        .attr("stroke", "black")
-        .attr("stroke-width", 2)
-        .attr("opacity", 0)
-        .transition()
-        .duration(75)
-        .attr("opacity", 1)
-        .transition()
-        .duration(2000)
-        .ease(d3.easeCubicIn)
-        .attr("cy", height - 200)
-        .on("end", function () { d3.select(this).remove(); });
+  function dropCoin(cx) {
+    coinGroup.append("image")
+      .attr("xlink:href", "assets/coin-illustration.png") // your illustrated coin
+      .attr("x", cx - 50)             // center image around `cx`
+      .attr("y", -100)
+      .attr("width", 100)
+      .attr("height", 100)
+      .attr("opacity", 0)
+      .transition()
+      .duration(100)
+      .attr("opacity", 1)
+      .transition()
+      .duration(1200)
+      .ease(d3.easeCubicIn)
+      .attr("y", height - 200)
+      .on("end", function () { d3.select(this).remove(); });
+  }
+// function dropCoin(cx) {
+//     coinGroup.append("circle")
+//       .attr("cx", cx)
+//       .attr("cy", -50)
+//       .attr("r", 25)
+//       .attr("fill", "#f5b509")
+//       .attr("stroke", "black")
+//       .attr("stroke-width", 2)
+//       .attr("opacity", 0)
+//       .transition()
+//       .duration(75)
+//       .attr("opacity", 1)
+//       .transition()
+//       .duration(1000) // faster fall
+//       .ease(d3.easeCubicIn)
+//       .attr("cy", height - 300)
+//       .on("end", function () { d3.select(this).remove(); });
+//   }
+
+  function generateCoins() {
+    const quarterStart = width * 0.25;
+    const quarterEnd = width * 0.5;
+    if (!coinTimer) {
+      coinTimer = d3.interval(() => {
+        const cx = Math.random() * (quarterEnd - quarterStart) + quarterStart;
+        dropCoin(cx);
+      }, 500); // slower drop interval
     }
+  }
 
-    function generateCoins() {
-      const quarterStart = width * 0.25;
-      const quarterEnd = width * 0.5;
-      if (!coinTimer) {
-        coinTimer = d3.interval(() => {
-          const cx = Math.random() * (quarterEnd - quarterStart) + quarterStart;
-          dropCoin(cx);
-        }, 300);
+  function stopCoins() {
+    if (coinTimer) {
+      coinTimer.stop();
+      coinTimer = null;
+    }
+  }
+
+  // Initialize scrollama
+  const scroller = scrollama();
+
+  scroller
+    .setup({
+      step: ".step",
+      offset: 0.3,
+      debug: false
+    })
+    .onStepEnter(response => {
+      const step = response.element.dataset.step;
+      const arrow = document.getElementById("scroll-arrow");
+
+      // ↓ arrow fades out after step 6
+      if (Number(step) < 6) {
+        arrow.style.opacity = "1";
+        arrow.style.animation = "blink 2s ease-in-out infinite";
+      } else {
+        arrow.style.opacity = "0";
+        arrow.style.animation = "none";
       }
-    }
 
-    function stopCoins() {
-      if (coinTimer) {
-        coinTimer.stop();
-        coinTimer = null;
-      }
-    }
 
-    /* Scroller */ 
-    const scroller = scrollama();
-
-    scroller
-      .setup({
-        step: ".step",
-        offset: 0.3,
-        debug: false
-      })
-      .onStepEnter(response => {
-        const step = response.element.dataset.step;
-
-        if (step === "1") {
+      // Coin and funnel transitions
+      if (step === "1") {
         generateCoins();
         document.getElementById("funnelImage").classList.remove("show");
         document.getElementById("funnelImage2").classList.remove("show");
-        }
+      }
 
-        if (step === "2") {
+      if (step === "1.8") {
         stopCoins();
         document.getElementById("funnelImage").classList.add("show");
         document.getElementById("funnelImage2").classList.remove("show");
-        }
+      }
 
-        if (step === "3") {
-          document.getElementById("funnelImage").classList.remove("show");
-          document.getElementById("funnelImage2").classList.add("show");
+      if (step === "3") {
+        document.getElementById("funnelImage").classList.remove("show");
+        document.getElementById("funnelImage2").classList.add("show");
       }
 
       if (step === "5") {
@@ -351,8 +385,6 @@
       if (step === "6.1") {
         document.getElementById("treemapImage").style.opacity = 1;
       }
-      
-
     });
 
   </script>
