@@ -30,6 +30,10 @@
       align-items: center;
       justify-content: center;
     }
+    /* Hide spacers by default (desktop) */
+    .spacer-mobile {
+      display: none;
+    }
     svg {
       position: absolute;
       width: 100%;
@@ -77,48 +81,171 @@
       margin: 0 auto;
       max-width: 100%;
       height: auto;
+    
+
   }
     
-    @media (max-width: 768px) {
+  @media (max-width: 768px) {
+    /* GENERAL MOBILE CLEANUP */
+    body {
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
     .step {
-      padding: 100px 20px;
-      font-size: 1em;
-    }
-
-    .graphic {
-      height: 60vh;
-    }
-
-    #funnelImage,
-    #funnelImage2,
-    #funnelImage3 {
-      height: 60vh;
-      object-fit: contain;
-    }
-
-    #treemapImage,
-    .step img {
-      width: 90% !important;
-      max-width: 100%;
-      max-height: 40vh;
+      padding: 80px 16px;
+      font-size: 1.1em;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .step > div {
       max-width: 90% !important;
       padding: 20px !important;
       transform: none !important;
+      margin: 0 auto !important;
     }
 
+    /* TEXT SIZING FIXES */
+    .step[data-step="6"] > div,
+    .step[data-step="6.5"] > div,
+    .step[data-step="9"] > div,
+    .step[data-step="10"] > div,
+    .step[data-step="2.3"] > div,
+    .step[data-step="2.8"] > div,
+    .step[data-step="3"] > div,
+    .step[data-step="5"] > div {
+      font-size: 0.9em !important;
+      line-height: 1.6 !important;
+    }
+
+    /* RIGHT SHIFT FIX */
+    .step[data-step="9"] > div {
+      margin-left: 0 !important;
+    }
+    
+    /* Default mobile graphic state */
+    .graphic {
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: block;
+      margin-bottom: 40px;
+    }
+
+    /* Make .graphic sticky and full-screen ONLY during steps 1–5 */
+    .step[data-step="1"] ~ .graphic,
+    .step[data-step="1.8"] ~ .graphic,
+    .step[data-step="2.3"] ~ .graphic,
+    .step[data-step="2.8"] ~ .graphic,
+    .step[data-step="3"] ~ .graphic,
+    .step[data-step="5"] ~ .graphic {
+      position: sticky !important;
+      top: 0;
+      height: 100vh !important;
+      z-index: 0;
+    }
+
+    /* As soon as we scroll past step 5, reset the space */
+    .step[data-step="6"] ~ .graphic {
+      height: auto !important;
+      position: relative !important;
+    }
+
+
+    /* FUNNEL IMAGE STYLES */
+    #funnelImage,
+    #funnelImage2,
+    #funnelImage3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: contain;
+      object-position: bottom center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+    }
+
+    #funnelImage.show,
+    #funnelImage2.show,
+    #funnelImage3.show {
+      opacity: 1;
+    }
+
+    /* COIN CANVAS */
+    svg#viz {
+      display: block;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    /* STEP 5 → 6 TRANSITION FIX */
+    .step[data-step="5"] {
+      height: 8vh !important;
+      padding: 0 !important;
+    }
+
+    .step[data-step="6"] {
+      padding-top: 20px !important;
+    }
+
+    /* TREEMAP IMAGE BIGGER */
+    #treemapImage {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* GENERAL IMAGE WIDTH */
+    .step img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    /* STEP 7 IMAGE */
     .step[data-step="7"] img {
       width: 90%;
       max-height: 40vh;
+      height: auto;
     }
 
+    /* ARROW SIZE */
     #scroll-arrow {
       font-size: 1.5rem;
       bottom: 6vh;
     }
+
+    /*FIX SPACING ON MOBILE UGH give them height to stretch scroll */
+    .spacer-mobile {
+      display: block;
+      width: 100%;
+    }
+
+    .spacer-mobile[data-step="2.4"] {
+      height: 100vh;
+    }
+
+    .spacer-mobile[data-step="2.95"] {
+      height: 120vh;
+    }
+
+    .spacer-mobile[data-step="4.95"] {
+      height: 130vh;
+    }
+
   }
+
 
   </style>
 
@@ -160,8 +287,6 @@
       <div style="max-width: 800px; padding: 0 0px;line-height: 1.6;">
         Every year, you help fund academic research across every discipline — from cancer research, space exploration, and climate modeling, <br>to education, equity, and public policy.
       </div>
-
-
     </div>
     
     <!-- Sticky graphic area begins here -->
@@ -176,58 +301,62 @@
     <!-- Extended scroll to show first funnel image longer -->
     </div>
 
-<div class="step" data-step="2.3" style="position: relative;">
-  <div style="
-    position: sticky;    top: 30vh; 
-    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
-    margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
-    color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
-    transform: translateX(200px);
-  ">
-    Federal agencies like NIH, NSF, NASA, and NEH distribute research funding to universities and institutes, where scholars carry out the work.
+  <div class="step" data-step="2.3" style="position: relative;">
+    <div style="
+      position: sticky;    top: 30vh; 
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
+      margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
+      color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
+      transform: translateX(200px);
+    ">
+      Federal agencies like NIH, NSF, NASA, and NEH distribute research funding to universities and institutes, where scholars carry out the work.
+    </div>
+  </div> 
+  <!-- spacer for mobile -->
+  <div class="step spacer-mobile" data-step="2.4"></div> 
+
+  <div class="step" data-step="2.8" style="position: relative;">
+    <div style="
+      position: sticky;    top: 30vh;  
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
+      margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
+      color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
+      transform: translateX(200px);">
+      Peer review, a critical part of the publishing process, relies almost entirely on <strong>researchers volunteering their time</strong>.
+    </div>
+  </div> 
+  <!-- spacer for mobile -->
+  <div class="step spacer-mobile" data-step="2.95"></div>
+
+  <div class="step" data-step="3" style="height: 10vh;">
+    <!-- transition to third funnel image -->
   </div>
-</div> 
 
+  <div class="step" data-step="3" style="position: relative;">
+    <div style="
+      position: sticky;    top: 30vh;  
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
+      margin: 0 auto; padding: 40px 20px; border: 0.8px solid black; border-radius: 10px;
+      color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
+      transform: translateX(200px);">
+      <strong>Sometimes the resulting publications are locked behind paywalls</strong>, forcing institutions (or the public) to pay again just to access them. 
+      <br> <br>
+      Othertimes, <strong>researchers pay thousands upfront to publish in open-access journals. </strong>
+    </div>
+  </div> 
+  <!-- spacer for mobile -->
+  <div class="step spacer-mobile" data-step="4.95"></div>
 
-<div class="step" data-step="2.8" style="position: relative;">
-  <div style="
-    position: sticky;    top: 30vh;  
-    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
-    margin: 0 auto; padding: 40px 20px; border: 0.5px solid black; border-radius: 10px;
-    color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
+  <div class="step" data-step="5" style="height: 1vh;">
+    <!-- transition to third funnel image -->
+  </div>
+
+  <div class="step" data-step="5" style="position: relative;">
+    <div style="position: sticky; top: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 30%; margin: 0 auto; padding: 60px 20px; border: 0.5px solid black; border-radius: 10px; color: black; font-size: 0.8em; line-height: 1.6;text-align: left;
     transform: translateX(200px);">
-    Peer review, a critical part of the publishing process, relies almost entirely on <strong>researchers volunteering their time</strong>.
+    <strong>Either way, <span style="color: #f5b509;">commercial publishers</span>  profit.</strong> 
+    </div>
   </div>
-</div> 
-
-<div class="step" data-step="3" style="height: 10vh;">
-  <!-- transition to third funnel image -->
-</div>
-
-<div class="step" data-step="3" style="position: relative;">
-  <div style="
-    position: sticky;    top: 30vh;  
-    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 40%;
-    margin: 0 auto; padding: 40px 20px; border: 0.8px solid black; border-radius: 10px;
-    color: black; font-size: 0.8em; line-height: 1.6; box-shadow: 4px 4px 0 rgba(0,0,0,0.1);text-align: left;
-    transform: translateX(200px);">
-    <strong>Sometimes the resulting publications are locked behind paywalls</strong>, forcing institutions (or the public) to pay again just to access them. 
-    <br> <br>
-    Othertimes, <strong>researchers pay thousands upfront to publish in open-access journals. </strong>
-  </div>
-</div> 
-
-
-<div class="step" data-step="5" style="height: 1vh;">
-  <!-- transition to third funnel image -->
-</div>
-
-<div class="step" data-step="5" style="position: relative;">
-  <div style="position: sticky; top: 0; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(6px); z-index: 2; max-width: 30%; margin: 0 auto; padding: 60px 20px; border: 0.5px solid black; border-radius: 10px; color: black; font-size: 0.8em; line-height: 1.6;text-align: left;
-  transform: translateX(200px);">
-  <strong>Either way, <span style="color: #f5b509;">commercial publishers</span>  profit.</strong> 
-  </div>
-</div>
   </div>
 
 
@@ -244,7 +373,7 @@
     <img id="treemapImage" src="assets/treemap.png" alt="Treemap of Publisher Share" style="max-width: 40%; height: auto; opacity: 1; transition: opacity 1s ease-in-out;">
   </div>  
 
-  <div class="step" data-step="6.5" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left; ">
+  <div class="step" data-step="6.5" style="padding: 40px 20px 40px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left; ">
     <div style="max-width: 700px; font-size: 0.7em; line-height: 1.4; ">
       <div style="margin-bottom: 1.5em;">
         The top three publishers account for more than half of global academic publishing revenue:<br>
@@ -271,8 +400,8 @@
     </div>
   </div>  
 
-  <div class="step" data-step="7" style="padding: 5px 0; display: flex; justify-content: center; align-items: center;">
-    <img src="assets/coinograph.png" alt="Coinography of Publishing Profits" style="max-width: 60%; max-height: 300px; height: auto; border-radius: 0;">
+  <div class="step" data-step="7" style="padding: px 0; display: flex; justify-content: center; align-items: center;">
+    <img src="assets/coinograph.png" alt="Coinography of Publishing Profits" style="max-width: 60%; max-height: 275px; height: auto; border-radius: 0;">
   </div>  
 
   <div class="step" data-step="9" style="padding: 40px 20px 20px 20px; display: flex; align-items: flex-start; justify-content: center; text-align: left; ">
@@ -307,19 +436,19 @@
       border-radius: 8px;
       padding: 30px;
       max-width: 700px;
-      font-size: 0.75em;
+      font-size: 0.5em;
       line-height: 1.4;
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
       color: #333;
     ">
       <h4 style="margin-top: 0; color: #010e1b;">About the Data</h4>
       <strong>Treemap Chart</strong><br>
-      Source: Kim & Park (2020), <em>Influence of the top 10 journal publishers listed in Journal Citation Reports based on six indicators.</em><br>
-      Calculated from Journal Citation Reports 2014 to 2018.</p>
-      <a href="https://www.escienceediting.org/journal/view.php?number=226" style="color: black; text-decoration: underline;">doi:/10.6087/kcse.209.</a>
+      Source: Kim & Park (2020), <em>Influence of the top 10 journal publishers listed in Journal Citation Reports based on six indicators.</em>
+      Calculated from Journal Citation Reports 2014 to 2018.
+      <a href="https://www.escienceediting.org/journal/view.php?number=226" style="color: black; text-decoration: underline;">doi:/10.6087/kcse.209.</a><br>
       <strong>Market Share</strong><br>
-      Source: Kim & Park (2020), <em>Market share of the largest publishers in Journal Citation Reports</em> based on journal price and article processing charge. Prices collected from February to April 2020.</p>
-      <a href="https://www.escienceediting.org/journal/view.php?number=221" style="color: black; text-decoration: underline;">doi:/10.6087/kcse.210.</a>
+      Source: Kim & Park (2020), <em>Market share of the largest publishers in Journal Citation Reports</em> based on journal price and article processing charge. Prices collected from February to April 2020.
+      <a href="https://www.escienceediting.org/journal/view.php?number=221" style="color: black; text-decoration: underline;">doi:/10.6087/kcse.210.</a><br>
       <strong>Editorial Walkouts</strong><br>
       <a href="https://retractionwatch.com/the-retraction-watch-mass-resignations-list/" target="_blank" style="color: black; text-decoration: underline;">Retraction Watch Resignation List.</a><br>
       <a href="https://oad.simmons.edu/oadwiki/Journal_declarations_of_independence" target="_blank" style="color: black; text-decoration: underline;">Open Access Directory: Journal Declarations of Independence.</a></p>
