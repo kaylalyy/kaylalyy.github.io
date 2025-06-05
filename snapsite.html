@@ -16,16 +16,16 @@
       position: relative;
     }
     body::before {
-      content: "";
-      position: absolute;
-      bottom: -300px;
-      left: -200px;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(233,132,51,0.5) 0%, rgba(255,255,255,0) 70%);
-      z-index: 0;
-      pointer-events: none;
-    }
+  content: "";
+  position: absolute;
+  bottom: 30vh;
+  left: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(233,132,51,0.5) 0%, rgba(255,255,255,0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
     header {
       background: transparent;
       padding: 1.5rem;
@@ -42,10 +42,57 @@
       margin-left: 30px;
     }
     @media (max-width: 768px) {
+  main {
+    padding: 0 1.5rem !important;
+    margin: 2rem auto 6rem auto !important;
+  }
+  main {
+    padding: 0 1.5rem;
+    margin: 2rem auto 6rem auto;
+  }
+  main {
+    padding: 0 1.5rem;
+    margin: 2rem auto 6rem auto;
+  }
   header img {
     margin-left: 15px;
     max-width: 90%;
   }
+  .mcclintock-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mcclintock-image {
+    max-width: 100%;
+  }
+}
+  main {
+  max-width: 800px;
+  margin: 2rem auto 6rem auto;
+  padding: 0 1.5rem 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+  .mcclintock-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mcclintock-image {
+    max-width: 100%;
+  }
+}
+  main {
+    margin: 2rem auto 6rem auto;
+    padding: 0 1.25rem;
+  }
+  .mcclintock-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .mcclintock-image {
+    max-width: 100%;
+  }
+}
   .mcclintock-section {
     flex-direction: column;
     align-items: center;
@@ -160,6 +207,30 @@ a:hover {
         <strong>Email:</strong> <a href="mailto:snapscipolorg@gmail.com">snapscipolorg@gmail.com</a>
       </p>
     </section>
+
+    </section>
+      <section class="we-are-from">
+      <h2>Our Network Includes Members Affiliated With Groups Such As:</h2>
+      <ul>
+        <li>Allegheny Science Policy and Governance</li>
+        <li>Cornell Advancing Science and Policy Club (ASAP)</li>
+        <li>Georgetown Science Policy Network</li>
+        <li>Harvard Griffin GSAS Science Policy Group</li>
+        <li>Jayhawks for Science Policy (JSP) at University of Kansas</li>        
+        <li>Penn Science Policy and Diplomacy Group</li>
+        <li>Policy Advocacy in Science and Engineering (PASE) at University of Florida</li>
+        <li>Promoting Science Policy, Education, and Research (ProSPER) at Washington University in St. Louis</li>
+        <li>Science Policy Advocacy Network at the University of Alabama at Birmingham</li>
+        <li>Science Policy and Diplomacy Group at Johns Hopkins</li>
+        <li>Science Policy Group at the University of California Los Angeles</li>
+        <li>Science Policy Group at the University of Maryland</li>
+        <li>Science Policy Initiative @ Notre Dame (SPI@ND)</li>
+        <li>Stanford Science Policy Group (SSPG)</li>
+        <li>University of North Carolina at Chapel Hill SPAG & GPSG (Science Policy & Advocacy Group & Graduate Professional Student Government)</li>
+        <li>Yale University (Graduate Student Government & Science Diplomats Group)</li>
+      </ul>
+    </section>
+
   </main>
 </body>
 </html>
